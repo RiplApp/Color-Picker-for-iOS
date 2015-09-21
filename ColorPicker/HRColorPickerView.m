@@ -202,34 +202,7 @@ typedef struct timeval timeval;
         return;
     }
 
-    CGFloat headerHeight = (20 + 44) * 1.625;
-    self.colorMapView.frame = CGRectMake(
-            0, headerHeight,
-            CGRectGetWidth(self.frame),
-            MAX(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) - headerHeight)
-    );
-    // use intrinsicContentSize for 3.5inch screen
-    CGRect colorMapFrame = (CGRect) {
-            .origin = CGPointZero,
-            .size = self.colorMapView.intrinsicContentSize
-    };
-    colorMapFrame.origin.y = CGRectGetHeight(self.frame) - CGRectGetHeight(colorMapFrame);
-    self.colorMapView.frame = colorMapFrame;
-    headerHeight = CGRectGetMinY(colorMapFrame);
-
-    self.colorInfoView.frame = CGRectMake(8, (headerHeight - 84) / 2.0f, 66, 84);
-
-    CGFloat hexLabelHeight = 18;
-    CGFloat sliderHeight = 11;
-    CGFloat brightnessPickerTop = CGRectGetMaxY(self.colorInfoView.frame) - hexLabelHeight - sliderHeight;
-
-    CGRect brightnessPickerFrame = CGRectMake(
-            CGRectGetMaxX(self.colorInfoView.frame) + 9,
-            brightnessPickerTop,
-            CGRectGetWidth(self.frame) - CGRectGetMaxX(self.colorInfoView.frame) - 9 * 2,
-            sliderHeight);
-
-    self.brightnessSlider.frame = [self.brightnessSlider frameForAlignmentRect:brightnessPickerFrame];
+    self.colorMapView.frame = self.bounds;
 }
 
 @end
