@@ -150,6 +150,7 @@
         CGPoint tapPoint = [sender locationOfTouch:0 inView:self];
         [self update:tapPoint];
         [self updateCursor];
+        [self sendNotificationIfEndOfTouchGesture:sender];
     }
 }
 
@@ -163,7 +164,16 @@
         [self update:tapPoint];
         [self updateCursor];
         _brightnessCursor.editing = YES;
+        [self sendNotificationIfEndOfTouchGesture:sender];
     }
+}
+
+- (void)sendNotificationIfEndOfTouchGesture:(UIGestureRecognizer *)aGestureRecognizer
+{
+    if( aGestureRecognizer.state == UIGestureRecognizerStateEnded )
+        {
+            [self sendActionsForControlEvents:UIControlEventTouchUpInside ];
+        }
 }
 
 - (void)update:(CGPoint)tapPoint {
