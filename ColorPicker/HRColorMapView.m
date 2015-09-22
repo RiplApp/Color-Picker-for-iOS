@@ -297,6 +297,7 @@
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
+    [ self sendNotificationIfEndOfTouchGesture: sender ];
     if (sender.state == UIGestureRecognizerStateEnded) {
         if (sender.numberOfTouches <= 0) {
             return;
@@ -307,6 +308,7 @@
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)sender {
+    [ self sendNotificationIfEndOfTouchGesture: sender ];
     if (sender.state == UIGestureRecognizerStateChanged || sender.state == UIGestureRecognizerStateEnded) {
         if (sender.numberOfTouches <= 0) {
             if ([_colorCursor respondsToSelector:@selector(setEditing:)]) {
@@ -319,6 +321,14 @@
         if ([_colorCursor respondsToSelector:@selector(setEditing:)]) {
             [_colorCursor setEditing:YES];
         }
+    }
+}
+
+- (void)sendNotificationIfEndOfTouchGesture:(UIGestureRecognizer *)aGestureRecognizer
+{
+    if( aGestureRecognizer.state == UIGestureRecognizerStateEnded )
+    {
+        [self sendActionsForControlEvents:UIControlEventTouchUpInside ];
     }
 }
 
