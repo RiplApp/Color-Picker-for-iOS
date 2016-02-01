@@ -145,6 +145,7 @@
 - (void)handleTap:(UITapGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateEnded) {
         if (sender.numberOfTouches <= 0) {
+            [self sendNotificationIfEndOfTouchGesture:sender];
             return;
         }
         CGPoint tapPoint = [sender locationOfTouch:0 inView:self];
@@ -158,6 +159,7 @@
     if (sender.state == UIGestureRecognizerStateChanged || sender.state == UIGestureRecognizerStateEnded) {
         if (sender.numberOfTouches <= 0) {
             _brightnessCursor.editing = NO;
+            [self sendNotificationIfEndOfTouchGesture:sender];
             return;
         }
         CGPoint tapPoint = [sender locationOfTouch:0 inView:self];
