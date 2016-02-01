@@ -143,7 +143,6 @@
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
-    [self sendNotificationIfEndOfTouchGesture:sender];
     if (sender.state == UIGestureRecognizerStateEnded) {
         if (sender.numberOfTouches <= 0) {
             return;
@@ -152,10 +151,10 @@
         [self update:tapPoint];
         [self updateCursor];
     }
+    [self sendNotificationIfEndOfTouchGesture:sender];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)sender {
-    [self sendNotificationIfEndOfTouchGesture:sender];
     if (sender.state == UIGestureRecognizerStateChanged || sender.state == UIGestureRecognizerStateEnded) {
         if (sender.numberOfTouches <= 0) {
             _brightnessCursor.editing = NO;
@@ -166,6 +165,7 @@
         [self updateCursor];
         _brightnessCursor.editing = YES;
     }
+    [self sendNotificationIfEndOfTouchGesture:sender];
 }
 
 - (void)sendNotificationIfEndOfTouchGesture:(UIGestureRecognizer *)aGestureRecognizer
