@@ -176,7 +176,6 @@
             ^{
                 [self sendActionsForControlEvents:UIControlEventTouchUpInside ];
             } );
-
         }
 }
 

@@ -328,7 +328,10 @@
 {
     if( aGestureRecognizer.state == UIGestureRecognizerStateEnded )
     {
-        [self sendActionsForControlEvents:UIControlEventTouchUpInside ];
+        dispatch_async( dispatch_get_main_queue(),
+                       ^{
+                           [self sendActionsForControlEvents:UIControlEventTouchUpInside ];
+                       } );
     }
 }
 
