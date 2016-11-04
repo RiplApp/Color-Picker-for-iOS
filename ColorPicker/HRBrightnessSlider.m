@@ -45,6 +45,7 @@
 
 @synthesize brightness = _brightness;
 @synthesize brightnessLowerLimit = _brightnessLowerLimit;
+@synthesize brightnessCursor = _brightnessCursor;
 
 - (id)init {
     return [self initWithFrame:CGRectZero];

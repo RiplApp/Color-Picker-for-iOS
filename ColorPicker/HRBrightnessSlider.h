@@ -27,6 +27,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "HRBrightnessCursor.h"
 
 @protocol HRBrightnessSlider
 
@@ -36,7 +37,7 @@
 
 @optional
 @property (nonatomic) NSNumber *brightnessLowerLimit;
-
+@property (nonatomic) HRBrightnessCursor *brightnessCursor;
 @end
 
 @interface HRBrightnessSlider : UIControl <HRBrightnessSlider>
