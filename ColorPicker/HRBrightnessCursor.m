@@ -56,7 +56,7 @@
 
         _brightnessLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 16)];
         _brightnessLabel.center = CGPointMake(CGRectGetWidth(self.frame) / 2 + 2, -20);
-        _brightnessLabel.backgroundColor = [UIColor clearColor];
+        _brightnessLabel.backgroundColor = [UIColor colorWithWhite:1. alpha:.7];
         _brightnessLabel.textAlignment = NSTextAlignmentCenter;
         _brightnessLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1];
         _brightnessLabel.alpha = 0;
